@@ -26,6 +26,7 @@ O.*
 
 # Local IOC shell history and editor/OS files
 .iocsh_history
+PROMPT.md
 .DS_Store
 *.swp
 *.swo

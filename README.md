@@ -27,11 +27,23 @@ The module requires:
 - EPICS Base
 - asyn
 - EIPScanner
+- CMake (used to build the bundled static EIPScanner library)
 
 Set the dependency paths in `configure/RELEASE`. The default configuration
 expects these packages under `/usr/local/epics`.
 
 ## Build
+
+Before building, edit [`configure/RELEASE`](configure/RELEASE) and set the
+paths for `EPICS_BASE`, `ASYN`, and `EIPSCANNER` for your environment. The
+top-level [`Makefile`](Makefile) documents these settings and provides a
+configuration check target.
+
+Check the active paths with:
+
+```sh
+make show-config
+```
 
 From the module root:
 
@@ -39,13 +51,44 @@ From the module root:
 make
 ```
 
+The top-level build automatically performs this sequence:
+
+1. Configure the bundled EIPScanner CMake project when needed.
+2. Build `third_party/EIPScanner/build/libEIPScanner.a`.
+3. Build and link the EPICS `genericEIP` support library and IOC.
+
+To build only the bundled EIPScanner library:
+
+```sh
+make eipscanner
+```
+
+If CMake is installed at a non-standard path, set `CMAKE` when invoking make:
+
+```sh
+make CMAKE=/opt/cmake/bin/cmake
+```
+
+To also generate the example IOC startup files, use:
+
+```sh
+make ioc
+```
+
+After changing `configure/RELEASE`, run `make show-config` again to verify
+the paths. Do not edit generated `O.*` directories.
+
 Build products are installed under `bin/` and `lib/`; these directories are
 ignored by Git.
 
 ## Example IOC
 
+สำหรับการสร้าง IOC ใหม่ด้วย `makeBaseApp.pl` และเพิ่ม genericEIP เป็น module
+ให้ดูที่ [docs/CREATE_IOC.md](docs/CREATE_IOC.md)
+
 The example IOC is in `iocBoot/iocGenericEIP`. Set `EIP_IP` in
-`iocBoot/iocGenericEIP/st.cmd`, then build and run:
+`iocBoot/iocGenericEIP/st.cmd` before running. The assembly IDs, sizes, RPIs,
+and device IP are all configured in that file. Build and run:
 
 ```sh
 make

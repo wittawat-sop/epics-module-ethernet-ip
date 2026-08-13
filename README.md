@@ -61,7 +61,8 @@ T→O Assembly = 100    T→O Size = 56 bytes    T→O RPI = 10000 us
 ```
 
 The target IP is configured by `EIP_IP`; the repository example currently
-uses `192.168.5.246`.
+uses the documentation-only example address `192.0.2.10`; replace it with
+the IP address of your EtherNet/IP device.
 
 ## Database mapping
 
@@ -83,7 +84,7 @@ Raw input/output access is demonstrated by `db/genericEIPRaw.db`.
 ## Configuration API
 
 ```text
-genericEipConfigure("EIP1", "192.168.5.246", 0.05,
+genericEipConfigure("EIP1", "192.0.2.10", 0.05,
                    0, 0, 0,
                    0, 101, 100,
                    40, 56,

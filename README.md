@@ -86,6 +86,9 @@ ignored by Git.
 สำหรับการสร้าง IOC ใหม่ด้วย `makeBaseApp.pl` และเพิ่ม genericEIP เป็น module
 ให้ดูที่ [docs/CREATE_IOC.md](docs/CREATE_IOC.md)
 
+คู่มือการใช้งาน support, database link และ IOC shell functions อยู่ที่
+[docs/SUPPORT_MANUAL.md](docs/SUPPORT_MANUAL.md)
+
 The example IOC is in `iocBoot/iocGenericEIP`. Set `EIP_IP` in
 `iocBoot/iocGenericEIP/st.cmd` before running. The assembly IDs, sizes, RPIs,
 and device IP are all configured in that file. Build and run:

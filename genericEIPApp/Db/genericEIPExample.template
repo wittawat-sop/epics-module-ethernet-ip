@@ -1,0 +1,58 @@
+# Generic data-mapping example.
+# The EIP_* info fields are the mapping contract for the future generic field
+# layer; the C++ driver must not contain these offsets or names.
+
+record(longout, "$(P)OutputWord0") {
+    field(DESC, "Generic O->T UINT16 at byte offset 0")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),0)UINT16")
+    info(EIP_DIRECTION, "OUTPUT")
+    info(EIP_OFFSET, "0")
+    info(EIP_LENGTH, "2")
+    info(EIP_DATATYPE, "UINT16")
+}
+
+record(longout, "$(P)OutputInt32_08") {
+    field(DESC, "Generic O->T INT32 at byte offset 8")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),8)INT32")
+    info(EIP_DIRECTION, "OUTPUT")
+    info(EIP_OFFSET, "8")
+    info(EIP_LENGTH, "4")
+    info(EIP_DATATYPE, "INT32")
+}
+
+record(longout, "$(P)OutputInt32_12") {
+    field(DESC, "Generic O->T INT32 at byte offset 12")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),12)INT32")
+    info(EIP_DIRECTION, "OUTPUT")
+    info(EIP_OFFSET, "12")
+    info(EIP_LENGTH, "4")
+    info(EIP_DATATYPE, "INT32")
+}
+
+record(longin, "$(P)InputWord0") {
+    field(DESC, "Generic T->O UINT16 at byte offset 0")
+    field(DTYP, "Ethernet/IP")
+    field(INP, "@etherip($(PORT),0)UINT16")
+    field(SCAN, "I/O Intr")
+    info(EIP_DIRECTION, "INPUT")
+    info(EIP_OFFSET, "0")
+    info(EIP_LENGTH, "2")
+    info(EIP_DATATYPE, "UINT16")
+}
+
+record(bi, "$(P)InputBit0") {
+    field(DESC, "Generic T->O bit 0 in byte offset 0")
+    field(DTYP, "Ethernet/IP")
+    field(INP, "@etherip($(PORT),0,0)BIT")
+    field(SCAN, "I/O Intr")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    info(EIP_DIRECTION, "INPUT")
+    info(EIP_OFFSET, "0")
+    info(EIP_LENGTH, "2")
+    info(EIP_DATATYPE, "UINT16")
+    info(EIP_BIT, "0")
+}

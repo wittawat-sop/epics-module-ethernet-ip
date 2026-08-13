@@ -1,0 +1,411 @@
+# Oriental Motor mapping implemented on the generic Ethernet/IP field layer.
+# Link format: @etherip($(PORT),offset[,bit])TYPE
+
+record(stringin, "$(P)$(R)ConnectionState") {
+    field(DESC, "EtherNet/IP connection state")
+    field(DTYP, "Ethernet/IP")
+    field(INP, "@etherip($(PORT))CONNECTION_STATE")
+    field(SCAN, "I/O Intr")
+}
+
+# -------------------------------------------------------------------
+# Output Control Records (Instance 101 - Writes to Driver)
+# -------------------------------------------------------------------
+record(longout, "$(P)$(R)CmdFlags") {
+    field(DESC, "Command Flags (Bitfield)")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),0)UINT16")
+    field(VAL,  "0")
+}
+
+# Individual command-flag bits (Output Assembly byte 0..1).
+# These are bo records so each bit can be controlled independently.
+record(bo, "$(P)$(R)CmdFlags_Bit00") { field(DESC, "Command flag bit 0") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,00)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit01") { field(DESC, "Command flag bit 1") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,01)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit02") { field(DESC, "Command flag bit 2") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,02)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit03") { field(DESC, "Command flag bit 3") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,03)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit04") { field(DESC, "Command flag bit 4") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,04)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit05") { field(DESC, "Command flag bit 5") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,05)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit06") { field(DESC, "Command flag bit 6") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,06)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit07") { field(DESC, "Command flag bit 7") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,07)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit08") { field(DESC, "Command flag bit 8") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,08)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit09") { field(DESC, "Command flag bit 9") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,09)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit10") { field(DESC, "Command flag bit 10") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,10)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit11") { field(DESC, "Command flag bit 11") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,11)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit12") { field(DESC, "Command flag bit 12") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,12)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit13") { field(DESC, "Command flag bit 13") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,13)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit14") { field(DESC, "Command flag bit 14") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,14)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+record(bo, "$(P)$(R)CmdFlags_Bit15") { field(DESC, "Command flag bit 15") field(DTYP, "Ethernet/IP") field(OUT, "@etherip($(PORT),0,15)BIT") field(ZNAM, "Off") field(ONAM, "On") }
+
+record(longout, "$(P)$(R)OpNum") {
+    field(DESC, "Operation Number")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),2)UINT16")
+    field(VAL,  "0")
+    field(DRVL, "0")
+    field(DRVH, "255")
+}
+
+record(mbbo, "$(P)$(R)OpType") {
+    field(DESC, "Operation Type")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),6)UINT16")
+    field(VAL,  "2")
+    field(ZRVL, "0")
+    field(ZRST, "No setting")
+    field(ONVL, "1")
+    field(ONST, "Absolute positioning")
+    field(TWVL, "2")
+    field(TWST, "Inc command pos")
+    field(THVL, "3")
+    field(THST, "Inc feedback pos")
+    field(FRVL, "7")
+    field(FRST, "Cont position")
+    field(FVVL, "8")
+    field(FVST, "Wrap absolute positioning")
+    field(SXVL, "9")
+    field(SXST, "Wrap prox pos")
+    field(SVVL, "10")
+    field(SVST, "Wrap absolute FWD")
+    field(EIVL, "11")
+    field(EIST, "Wrap absolute RVS")
+    field(NIVL, "12")
+    field(NIST, "Wrap absolute push-motion")
+    field(TEVL, "13")
+    field(TEST, "Wrap prox push")
+    field(TVVL, "14")
+    field(TVST, "Wrap push-motion FWD")
+    field(TTVL, "15")
+    field(TTST, "Wrap push-motion RVS")
+    field(FTVL, "16")
+    field(FTST, "Continuous speed control")
+    field(FFVL, "17")
+    field(FFST, "Continuous push motion")
+    info(ORIENTAL_EIP_ENUM_18, "18=Continuous torque control")
+    info(ORIENTAL_EIP_ENUM_20, "20=Absolute push-motion")
+    info(ORIENTAL_EIP_ENUM_21, "21=Incremental push-motion (command position)")
+    info(ORIENTAL_EIP_ENUM_22, "22=Incremental push-motion (feedback position)")
+}
+
+record(longout, "$(P)$(R)TargetPos") {
+    field(DESC, "Target Position")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),8)INT32")
+    field(VAL,  "0")
+    field(EGU,  "step")
+    field(DRVL, "-2147483648")
+    field(DRVH, "2147483647")
+}
+
+record(longout, "$(P)$(R)OpSpeed") {
+    field(DESC, "Operating Speed")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),12)INT32")
+    field(VAL,  "1000")
+    field(EGU,  "Hz")
+    field(DRVL, "-4000000")
+    field(DRVH, "4000000")
+}
+
+record(longout, "$(P)$(R)StartSpeed") {
+    field(DESC, "Starting/changing rate (0.001kHz/s)")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),16)UINT32")
+    field(VAL,  "1000000")
+    field(EGU,  "0.001kHz/s")
+    field(DRVL, "1")
+    field(DRVH, "1000000000")
+}
+
+record(longout, "$(P)$(R)AccelRate") {
+    field(DESC, "Stopping deceleration (0.001kHz/s)")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),20)UINT32")
+    field(VAL,  "1000000")
+    field(EGU,  "0.001kHz/s")
+    field(DRVL, "1")
+    field(DRVH, "1000000000")
+}
+
+record(longout, "$(P)$(R)TorqueLimit") {
+    field(DESC, "Operating current")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),24)UINT16")
+    field(VAL,  "1000")
+    field(EGU,  "0.1%")
+    field(DRVL, "0")
+    field(DRVH, "1000")
+}
+
+record(mbbo, "$(P)$(R)ForwardData") {
+    field(DESC, "Destination")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),26)UINT16")
+    field(VAL,  "0")
+    field(ZRVL, "0")
+    field(ZRST, "Execution memory")
+    field(ONVL, "1")
+    field(ONST, "Buffer memory")
+}
+
+record(longout, "$(P)$(R)ReverseData") {
+    field(DESC, "Write data")
+    field(DTYP, "Ethernet/IP")
+    field(OUT,  "@etherip($(PORT),36)INT32")
+    field(VAL,  "0")
+    field(DRVL, "-2147483648")
+    field(DRVH, "2147483647")
+}
+
+# Fixed I/O (IN), byte 4..5 of Output Assembly.
+record(bo, "$(P)$(R)FixedIO_FwJog") {
+    field(DESC, "Fixed I/O FW-JOG")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,1)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_RvJog") {
+    field(DESC, "Fixed I/O RV-JOG")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,2)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_Start") {
+    field(DESC, "Fixed I/O START")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,3)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_Zhome") {
+    field(DESC, "Fixed I/O ZHOME")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,4)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_Stop") {
+    field(DESC, "Fixed I/O STOP")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,5)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_Free") {
+    field(DESC, "Fixed I/O FREE")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,6)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_AlmRst") {
+    field(DESC, "Fixed I/O ALM-RST")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,7)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_Trig") {
+    field(DESC, "Fixed I/O TRIG")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,8)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_TrigMode") {
+    field(DESC, "Fixed I/O TRIG-MODE")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,9)BIT")
+    field(ZNAM, "Edge")
+    field(ONAM, "Level")
+}
+record(bo, "$(P)$(R)FixedIO_FwJogP") {
+    field(DESC, "Fixed I/O FW-JOG-P")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,12)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_RvJogP") {
+    field(DESC, "Fixed I/O RV-JOG-P")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,13)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_FwPos") {
+    field(DESC, "Fixed I/O FW-POS")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,14)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bo, "$(P)$(R)FixedIO_RvPos") {
+    field(DESC, "Fixed I/O RV-POS")
+    field(DTYP, "Ethernet/IP")
+    field(OUT, "@etherip($(PORT),4,15)BIT")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+
+# Actual Fixed I/O output status from Input Assembly bytes 4..5.
+record(bi, "$(P)$(R)OutputStatus_SeqBsy") { field(DESC, "SEQ-BSY") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,00)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_Move") { field(DESC, "MOVE") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,01)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_InPos") { field(DESC, "IN-POS") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,02)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_StartR") { field(DESC, "START_R response") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,03)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_HomeEnd") { field(DESC, "HOME-END") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,04)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_Ready") { field(DESC, "READY") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,05)BIT") field(ZNAM, "Not ready") field(ONAM, "Ready") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_DcmdRdy") { field(DESC, "DCMD-RDY") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,06)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_AlmA") { field(DESC, "ALM-A") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,07)BIT") field(ZNAM, "Normal") field(ONAM, "Alarm") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_TrigR") { field(DESC, "TRIG_R response") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,08)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_TrigModeR") { field(DESC, "TRIG-MODE_R") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,09)BIT") field(ZNAM, "Edge") field(ONAM, "Level") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_SetErr") { field(DESC, "SET-ERR") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,10)BIT") field(ZNAM, "OK") field(ONAM, "Error") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_ExeErr") { field(DESC, "EXE-ERR") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,11)BIT") field(ZNAM, "OK") field(ONAM, "Error") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_DcmdFull") { field(DESC, "DCMD-FULL") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,12)BIT") field(ZNAM, "Not full") field(ONAM, "Full") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_StopR") { field(DESC, "STOP_R response") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,13)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)OutputStatus_Tlc") { field(DESC, "TLC") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,15)BIT") field(ZNAM, "Below limit") field(ONAM, "Torque limit") field(SCAN, "I/O Intr") }
+
+# -------------------------------------------------------------------
+# Input Status Records (Instance 100 - Reads from Driver)
+# -------------------------------------------------------------------
+## Remote I/O (R-OUT), Input Assembly bytes 0..1.
+record(bi, "$(P)$(R)RemoteIO_M0") { field(DESC, "R-OUT M0") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,0)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_M1") { field(DESC, "R-OUT M1") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,1)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_M2") { field(DESC, "R-OUT M2") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,2)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Start") { field(DESC, "R-OUT START") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,3)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_HomeEnd") { field(DESC, "R-OUT HOME-END") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,4)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Ready") { field(DESC, "R-OUT READY") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,5)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Info") { field(DESC, "R-OUT INFO") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,6)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_AlmA") { field(DESC, "R-OUT ALM-A") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,7)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_SysBsy") { field(DESC, "R-OUT SYS-BSY") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,8)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Area0") { field(DESC, "R-OUT AREA0") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,9)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Area1") { field(DESC, "R-OUT AREA1") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,10)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Area2") { field(DESC, "R-OUT AREA2") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,11)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Tim") { field(DESC, "R-OUT TIM") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,12)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Move") { field(DESC, "R-OUT MOVE") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,13)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_InPos") { field(DESC, "R-OUT IN-POS") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,14)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)RemoteIO_Tlc46") { field(DESC, "R-OUT TLC46") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),0,15)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+
+## Fixation I/O (OUT), Input Assembly bytes 4..5. Names are bit numbers because assignments are configurable.
+record(bi, "$(P)$(R)FixationIO_Bit00") { field(DESC, "Fixation I/O bit 0") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,00)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit01") { field(DESC, "Fixation I/O bit 1") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,01)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit02") { field(DESC, "Fixation I/O bit 2") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,02)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit03") { field(DESC, "Fixation I/O bit 3") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,03)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit04") { field(DESC, "Fixation I/O bit 4") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,04)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit05") { field(DESC, "Fixation I/O bit 5") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,05)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit06") { field(DESC, "Fixation I/O bit 6") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,06)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit07") { field(DESC, "Fixation I/O bit 7") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,07)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit08") { field(DESC, "Fixation I/O bit 8") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,08)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit09") { field(DESC, "Fixation I/O bit 9") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,09)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit10") { field(DESC, "Fixation I/O bit 10") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,10)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit11") { field(DESC, "Fixation I/O bit 11") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,11)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit12") { field(DESC, "Fixation I/O bit 12") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,12)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit13") { field(DESC, "Fixation I/O bit 13") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,13)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit14") { field(DESC, "Fixation I/O bit 14") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,14)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+record(bi, "$(P)$(R)FixationIO_Bit15") { field(DESC, "Fixation I/O bit 15") field(DTYP, "Ethernet/IP") field(INP, "@etherip($(PORT),4,15)BIT") field(ZNAM, "Off") field(ONAM, "On") field(SCAN, "I/O Intr") }
+
+record(longin, "$(P)$(R)StatFlags") {
+    field(DESC, "Status Flags (Bitfield)")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),0)UINT16")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)AlarmCode") {
+    field(DESC, "Alarm Code")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),6)UINT16")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)DetectPos") {
+    field(DESC, "Detected Position")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),8)INT32")
+    field(EGU,  "step")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)DetectSpeed") {
+    field(DESC, "Detected Speed")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),12)INT32")
+    field(EGU,  "Hz")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)DetectTorque") {
+    field(DESC, "Detected Torque")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),20)INT16")
+    field(EGU,  "0.1%")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)DirectInStat") {
+    field(DESC, "Direct Input Status")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),4)UINT16")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)DirectOutStat") {
+    field(DESC, "Direct Output Status")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),0)UINT16")
+    field(SCAN, "I/O Intr")
+}
+
+# -------------------------------------------------------------------
+# Monitor Data Channels (Param29..35 / Monitor 0..6)
+# -------------------------------------------------------------------
+record(longin, "$(P)$(R)Monitor0") {
+    field(DESC, "Monitor Channel 0")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),40)INT32")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)Monitor1") {
+    field(DESC, "Monitor Channel 1")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),44)INT32")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)Monitor2") {
+    field(DESC, "Monitor Channel 2")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),48)INT32")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)Monitor3") {
+    field(DESC, "Monitor Channel 3")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),52)INT32")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)Monitor4") {
+    field(DESC, "Monitor Channel 4")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),56)INT32")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)Monitor5") {
+    field(DESC, "Monitor Channel 5")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),60)INT32")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P)$(R)Monitor6") {
+    field(DESC, "Monitor Channel 6")
+    field(DTYP, "Ethernet/IP")
+    field(INP,  "@etherip($(PORT),64)INT32")
+    field(SCAN, "I/O Intr")
+}

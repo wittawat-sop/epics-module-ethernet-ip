@@ -1,0 +1,7 @@
+record(asyn, "$(P)RAW") {
+    field(DTYP, "asynRecordDevice")
+    field(PORT, "$(PORT)")
+    field(ADDR, "$(ADDR)")
+    field(OMAX, "$(OUT_SIZE)")
+    field(IMAX, "$(IN_SIZE)")
+}

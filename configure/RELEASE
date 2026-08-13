@@ -1,0 +1,4 @@
+SUPPORT=/usr/local/epics/support
+EPICS_BASE=/usr/local/epics/base
+ASYN=$(SUPPORT)/asyn-R4-44-2
+EIPSCANNER=/usr/local/epics/support/ethernet_ip/third_party/EIPScanner

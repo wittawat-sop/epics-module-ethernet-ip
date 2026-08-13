@@ -1,0 +1,13 @@
+startup = "/usr/local/epics/support/ethernet_ip/iocBoot/iocGenericEIP"
+putenv("IOC=iocGenericEIP")
+top = "/usr/local/epics/support/ethernet_ip"
+putenv("TOP=/usr/local/epics/support/ethernet_ip")
+topbin = "/usr/local/epics/support/ethernet_ip/bin/linux-x86_64"
+support = "/usr/local/epics/support"
+putenv("SUPPORT=/usr/local/epics/support")
+epics_base = "/usr/local/epics/base"
+putenv("EPICS_BASE=/usr/local/epics/base")
+epics_basebin = "/usr/local/epics/base/bin/linux-x86_64"
+asyn = "/usr/local/epics/support/asyn-R4-44-2"
+putenv("ASYN=/usr/local/epics/support/asyn-R4-44-2")
+asynbin = "/usr/local/epics/support/asyn-R4-44-2/bin/linux-x86_64"

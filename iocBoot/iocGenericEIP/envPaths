@@ -1,0 +1,5 @@
+epicsEnvSet("IOC","iocGenericEIP")
+epicsEnvSet("TOP","/usr/local/epics/support/ethernet_ip")
+epicsEnvSet("SUPPORT","/usr/local/epics/support")
+epicsEnvSet("EPICS_BASE","/usr/local/epics/base")
+epicsEnvSet("ASYN","/usr/local/epics/support/asyn-R4-44-2")

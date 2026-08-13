@@ -1,55 +1,36 @@
-# Prerequisites
+# EPICS generated build directories and dependency files
+O.*
 *.d
 
-# Object files
+# EPICS installed products
+/bin/
+/lib/
+
+# C/C++ build products
 *.o
-*.ko
+*.a
+*.so
+*.so.*
+*.la
+*.lo
 *.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
+*.dll
+*.dylib
+*.exe
+*.out
 *.gch
 *.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# EIPScanner out-of-source build
+/third_party/EIPScanner/build/
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# Local IOC shell history and editor/OS files
+.iocsh_history
+.DS_Store
+*.swp
+*.swo
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-# debug information files
-*.dwo
+# Local test/runtime output
+*.log
+core
+core.*

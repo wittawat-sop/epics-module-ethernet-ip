@@ -1,0 +1,12 @@
+include "base.dbd"
+include "asyn.dbd"
+registrar(genericEIPRegister)
+device(ai, INST_IO, devEipAi, "Ethernet/IP")
+device(ao, INST_IO, devEipAo, "Ethernet/IP")
+device(bi, INST_IO, devEipBi, "Ethernet/IP")
+device(bo, INST_IO, devEipBo, "Ethernet/IP")
+device(longin, INST_IO, devEipLongin, "Ethernet/IP")
+device(longout, INST_IO, devEipLongout, "Ethernet/IP")
+device(mbbi, INST_IO, devEipMbbi, "Ethernet/IP")
+device(mbbo, INST_IO, devEipMbbo, "Ethernet/IP")
+device(stringin, INST_IO, devEipStringin, "Ethernet/IP")
